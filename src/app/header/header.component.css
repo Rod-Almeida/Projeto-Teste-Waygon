@@ -2,3 +2,11 @@
     padding: 0px 5px;
     font-size: 20px;
 }
+
+img{
+    height: 40px;
+}
+
+mat-toolbar{
+    background-color: rgb(211, 219, 226);
+}
