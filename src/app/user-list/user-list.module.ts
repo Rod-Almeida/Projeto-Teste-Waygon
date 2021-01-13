@@ -8,10 +8,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
- 
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [UserListComponent],
+  declarations: [UserListComponent, UserDetailsComponent],
   providers: [UserListService],
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
   ]
 })
 export class UserListModule { }

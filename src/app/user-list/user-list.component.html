@@ -41,9 +41,9 @@
 
     <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let element"> <section>
+      <td mat-cell *matCellDef="let element; let i=index"> <section>
           <div>
-          <a mat-button target="_blank">Ver mais detalhes</a>
+          <a mat-button target="_blank" (click)="goToDetails(i)">Ver mais detalhes</a>
         </div>
       </section> </td>
     </ng-container>

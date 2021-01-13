@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserListService } from './user-list.service';
-
+import { Router } from '@angular/router';
 
 export interface UserList
 {
@@ -41,7 +41,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
   userList: Array<UserList> = [
   ];
 
-  constructor(private userListService: UserListService) {}
+  constructor(private userListService: UserListService,
+              private router: Router,
+    ) {}
 
   ngOnInit(): void {
     this.createList();
@@ -97,5 +99,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  goToDetails(i){
+    this.router.navigate(['/details']);
+  }
 
 }
