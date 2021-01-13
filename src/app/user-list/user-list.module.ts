@@ -7,7 +7,8 @@ import { UserListComponent } from './user-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatButtonModule } from '@angular/material/button';
+ 
 
 @NgModule({
   declarations: [UserListComponent],
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
   ]
 })
 export class UserListModule { }

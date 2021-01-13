@@ -1,8 +1,18 @@
 table {
     width: 100%;
   }
-
+h2{
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    text-align: center;
+}
   .container{
     width: 80%;
     margin: auto;
+
   }
+.background{
+    background-color: rgb(211, 219, 226);
+    height: 90%;
+}
