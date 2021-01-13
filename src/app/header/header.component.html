@@ -7,16 +7,14 @@
             </button>
     
         <div *ngIf="!deviceXs">
-            <button mat-button>Home</button>
-            <button mat-button>Contact us</button>
-            <button mat-button>About us</button>
+            <button mat-button (click)="goToUsersList()">Usuários</button>
         </div>
     </div>
         <div>
             <button mat-icon-button>
-                <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
+                <mat-icon *ngIf="deviceXs">account_circle</mat-icon>
         <span *ngIf="!deviceXs">
-            Menu
+            <mat-icon >account_circle</mat-icon>
         </span>
             </button>
         </div>
@@ -24,11 +22,6 @@
       </mat-toolbar-row>
   
       <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
-        <button mat-button>Home</button>
-        <button mat-button>Contact us</button>
-        <button mat-button>About us</button>
-       
-
-
+        <button mat-button (click)="goToUsersList()">Usuários</button>
       </mat-toolbar-row>
     </mat-toolbar>
