@@ -101,6 +101,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   goToDetails(i){
     this.router.navigate(['/details']);
+    localStorage.setItem(
+      'index', i
+    )
   }
 
 }

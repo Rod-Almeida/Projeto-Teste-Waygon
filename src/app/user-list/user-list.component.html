@@ -2,8 +2,8 @@
     <h2> Lista de Usuários </h2>
 <div class="container">
 <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <mat-label>Pesquisar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Digite o nome, email, ou ID" #input>
   </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
