@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { MatCardModule } from '@angular/material/card';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [UserListComponent, UserDetailsComponent],
@@ -23,6 +24,9 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAw7Hr7ZbGpJUEVCDkw_V_fhtrvHvXMHP4'
+    })
   ]
 })
 export class UserListModule { }

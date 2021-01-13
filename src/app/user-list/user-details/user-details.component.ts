@@ -8,23 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-   userList: Array<any>;
+
+  userList: Array<any>;
   index: any;
+  lat;
+  lng;
+  zoom = 15;
 
   constructor(private service: UserListService,
               private router: Router) { }
 
   ngOnInit(): void {
     this.createList();
-    this.index = localStorage.getItem('index'
-    )
-    console.log(this.index)
-  
   }
+
   createList(){
     this.service.createList().subscribe((res: any) => {
       this.userList = res;
-      console.log('details: ', res)
+      this.index = localStorage.getItem('index')
+      this.lat = Number(this.userList[this.index].address.geo.lat)
+      this.lng = Number(this.userList[this.index].address.geo.lng)
     })
   }
 

@@ -18,13 +18,16 @@ padding-top: 20px;
     display: flex;
     align-items: center;
     align-content: start;
+    margin-bottom: 30px;
+}
+.fullAdresss{
+    
+    display: flex;
+    margin-bottom: 10px;
 }
 
-.fullName{
-    grid-column: 1/2;
-    grid-row: 1/2;
-}
-.phone{
-    grid-column: 2/3;
-    grid-row: 1/2;
-}
+agm-map {
+    height: 300px;
+    width: 100%;
+    margin: auto;
+  }

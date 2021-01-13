@@ -2,37 +2,45 @@
     <div class="container">
         <mat-card class="example-card">
             <mat-card-header>
-            <mat-card-title>Detalhes do Usuário</mat-card-title>
-            <mat-card-subtitle><p>{{userList[index].username}}</p></mat-card-subtitle>
+                <mat-card-title>Detalhes do Usuário:</mat-card-title>
+                <mat-card-subtitle>
+                    <p>{{userList[index].username}}</p>
+                </mat-card-subtitle>
             </mat-card-header>
 
             <mat-card-content>
-                <div class="grid"> 
-                    <div class="fullName"> <h3>Nome Completo: </h3><div>{{userList[index].name}}</div>
+                <div class="grid">
+                    <div class="fullName">
+                        <h3>Nome Completo: </h3>
+                        <h2>{{userList[index].name}}</h2>
                     </div>
-                    <div class="phone"> <h3>Telefone: </h3><div>{{userList[index].phone}}</div>
+                    <div class="phone">
+                        <h3>Telefone: </h3>
+                        <h2>{{userList[index].phone}}</h2>
                     </div>
-                    <div class="website"> <h3>Site: </h3><div>{{userList[index].website}}</div>
+                    <div class="website">
+                        <h3>Site: </h3>
+                        <h2>{{userList[index].website}}</h2>
                     </div>
-                    <div class="companyName"> <h3>Nome da Empresa: </h3><div>{{userList[index].company.name}}</div>
+                    <div class="companyName">
+                        <h3>Nome da Empresa: </h3>
+                        <h2>{{userList[index].company.name}}</h2>
                     </div>
-                    </div>
+                </div>
+                <div class="fullAdresss">
+                    <h3>Address: </h3>
+                    <h3>{{userList[index].address.street}}, </h3>
+                    <h3>{{userList[index].address.suite}}, </h3>
+                    <h3>{{userList[index].address.city}}, </h3>
+                    <h3>Zip Code: {{userList[index].address.city}}</h3>
+                </div>
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button (click)="back()">Voltar</button>
+                <button mat-button (click)="back()">Voltar</button>
             </mat-card-actions>
-          </mat-card>
-
-
-
-
-
-
-
-
-
-
-
-
+        </mat-card>
     </div>
 </div>

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserListModule } from './user-list/user-list.module';
 import { UserListService } from '../app/user-list/user-list.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     UserListModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAw7Hr7ZbGpJUEVCDkw_V_fhtrvHvXMHP4'
+    })
   ],
   providers: [UserListService],
   bootstrap: [AppComponent]
