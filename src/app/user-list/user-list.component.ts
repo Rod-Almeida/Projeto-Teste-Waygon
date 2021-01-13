@@ -79,7 +79,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
     }
     return `${
       this.selection.isSelected(row) ? "deselect" : "select"
-    } row ${(row.id + 1)}`;
+    } row ${(String(row.id) + 1)}`;
   }
 
   applyFilter(event: Event) {
