@@ -9,7 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { UserListModule } from './user-list/user-list.module';
-
+import { UserListService } from '../app/user-list/user-list.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { UserListModule } from './user-list/user-list.module';
     MatIconModule,
     AppRoutingModule,
     UserListModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [UserListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

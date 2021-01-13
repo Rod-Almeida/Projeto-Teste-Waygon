@@ -1,42 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserListService } from './user-list.service';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+
+export interface UserList
+{
+    id: Number;
+    name: String;
+    username: String;
+    email: String;
+    address: {
+      street:String;
+      suite: String;
+      city: String;
+      zipcode: String;
+      geo: {
+        lat: String;
+        lng: String;
+      }
+    };
+    phone: String;
+    website: String;
+    company: {
+      name: String;
+      catchPhrase: String;
+      bs: String;
+    }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+const ELEMENT_DATA: UserList [] = [];
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: "app-user-list",
+  templateUrl: "./user-list.component.html",
+  styleUrls: ["./user-list.component.css"],
 })
+export class UserListComponent implements OnInit, AfterViewInit {
+  // userListURL = 'https://jsonplaceholder.typicode.com/users'
+  userList: Array<UserList> = [
+  ];
+
+  constructor(private userListService: UserListService) {}
+
+  ngOnInit(): void {
+    this.createList();
+  }
+
+  ngAfterViewInit() {
+    this.createList();
+  }
+
+  displayedColumns: string[] = ["select", "id", "username", "email", "details"];
+  dataSource = new MatTableDataSource<UserList>();
+  selection = new SelectionModel<UserList>(true, []);
 
 
-export class UserListComponent implements OnInit {
-
-  constructor() { }
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-
-  
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -46,20 +65,19 @@ export class UserListComponent implements OnInit {
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: UserList): string {
     if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+      return `${this.isAllSelected() ? "select" : "deselect"} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-  }
-
-  ngOnInit(): void {
+    return `${
+      this.selection.isSelected(row) ? "deselect" : "select"
+    } row ${(row.id + 1)}`;
   }
 
   applyFilter(event: Event) {
@@ -70,4 +88,14 @@ export class UserListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  createList() {
+    this.userListService.createList().subscribe((res: any) => {
+      this.userList = res;
+      console.log("lat ", this.userList);
+      this.dataSource = new MatTableDataSource<UserList>(this.userList)
+    });
+  }
+
+
 }
